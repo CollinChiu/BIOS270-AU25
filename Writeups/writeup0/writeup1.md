@@ -1,4 +1,4 @@
-# Write-up 0: template
+# Write-up 1: template
 
 **Name:** Collin Chiu
 **Student ID:** cochiu9
