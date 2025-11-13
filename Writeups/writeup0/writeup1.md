@@ -197,7 +197,10 @@ while read -r value; do
     ((i++))
 done < data.txt
 ```
-
+Answer the following questions in your `write-up`:
+1. How many slurm job will be submitted?
+2. What is the purpose of the `if` statement?
+3. What is the expected output in each `*.out` file?
 
 My inputs:
 Last login: Fri Oct 31 22:38:22 on ttys001
