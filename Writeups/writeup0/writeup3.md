@@ -139,3 +139,5 @@ Since it takes a few hours to create h5 file from `create_protein_h5.sh`, use da
 
 create_bacteria_db.sh will create will create 3 tables.
 Try is to try writing into the database, but not to if the db is locked as another operations is writing into it. The except is if is currently being written in by another operation, to then to pause and then try again.
+
+the chunk pattern chunks by rows, instead of columns, which makes sense, as we often need to retrieve all data for a sample, as opposed to just one statistic for all samples.
