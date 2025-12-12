@@ -217,3 +217,15 @@ git remote -v
 # Add upstream (optional but recommended)
 git remote add upstream https://github.com/khoa-yelo/BIOS270-AU25.git
 ```
+
+"Git provides a history of content changes"
+git log --graph --oneline --all --decorate
+
+
+<img width="1294" height="394" alt="image" src="https://github.com/user-attachments/assets/e8d60de0-b065-4c8e-9787-28b3561960a6" />
+<img width="1210" height="374" alt="image" src="https://github.com/user-attachments/assets/ff4912fc-7803-4e52-8e82-54177eabc9fa" />
+<img width="1324" height="378" alt="image" src="https://github.com/user-attachments/assets/d86fe9ea-12a4-4eda-812f-0efce5991cc2" />
+<img width="1204" height="264" alt="image" src="https://github.com/user-attachments/assets/c5924e79-a6b8-455f-8a7f-2996bc4892c6" />
+
+
+
