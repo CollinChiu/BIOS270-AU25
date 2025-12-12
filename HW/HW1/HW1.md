@@ -226,6 +226,8 @@ git log --graph --oneline --all --decorate
 <img width="1210" height="374" alt="image" src="https://github.com/user-attachments/assets/ff4912fc-7803-4e52-8e82-54177eabc9fa" />
 <img width="1324" height="378" alt="image" src="https://github.com/user-attachments/assets/d86fe9ea-12a4-4eda-812f-0efce5991cc2" />
 <img width="1204" height="264" alt="image" src="https://github.com/user-attachments/assets/c5924e79-a6b8-455f-8a7f-2996bc4892c6" />
+<img width="1198" height="264" alt="image" src="https://github.com/user-attachments/assets/589d9b93-b391-4722-9194-23b7f1f434d2" />
+
 
 
 
