@@ -91,3 +91,34 @@ Brainstorm an ML task that can be performed on your data
 
 - **Evaluation metrics**  
   What metrics will you track? Why are they appropriate for your task?
+
+
+Overall Goal: to bioinformatically identify STAND phage defense proteins
+Rationale: STANDs are unique defense proteins, characterized by their tripartite structure: An effector domain, an ATPase, and a recognition domain. They function by binding conserved phage protein folds, leading to cell death. It is of great interest to understand which phage proteins these STANDs recognize. However, the diversity of STANDs is challenging to unravel due to their high diversity in sequence space, besides the ATPase domain.
+
+Aims:
+  computationally predict STANDs
+  expect to find high model accuracy on the validation set
+
+  Identify phage proteins that these novel STANDS sense in defense
+  expect to find conserved, vital phage proteins (as makes most sense to prevent phages from avoiding detection)
+
+Data:
+  Source: lab-generated FASTA of all known characterized STANDs
+  public repo of ESM metagenomic atlas embeddings
+  format is already optimal
+
+  store data on Sherlock
+  back up and share on github
+
+Environment:
+  Sherlock
+  key dependencies of numpy, pytorch
+  reproducible to do containerization and yaml file environment
+
+Pipeline / ML:
+  take known metegnomic protein sequence embeddings for atalas, generate average residue embedding 
+  split known STANDs into training and test set, as well as random selection of prokaryotic proteins (supervised, for generalization)
+  embed known STANDs using ESM fold (feature representation)
+  train neural network to classify STAND and non-stand (dependent on last step)
+  Verify on the validation step the recall, as we want to test all potential STANDs experiementally
