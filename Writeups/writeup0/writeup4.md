@@ -40,3 +40,23 @@ Modify your pipeline so that:
 1. If the user provides `--index`, use that directly.  
 2. If `--index` is **not provided**, but `--transcriptome` is, automatically run `SALMON_INDEX` to build one.  
 3. If **neither** parameter is provided, exit with an informative error message.
+
+To add DESeq2 to the script, I would run Salmon as an array as opposed to a loop. Then I would run DESeq2, but only after a dependency on the array completion, to make sure it only runs if all Salmon processes finish successfully.
+
+General Salmon_INDDEX process:
+process SALMON_INDEX {
+    tag "salmon_index"
+
+    input:
+    path transcriptome
+
+    output:
+    path "salmon_index", emit: index_dir
+
+    """
+    salmon index \
+        -t ${transcriptome} \
+        -i salmon_index
+    """
+}
+
