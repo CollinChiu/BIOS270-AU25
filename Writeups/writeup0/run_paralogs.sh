@@ -1,49 +1,37 @@
 #!/bin/bash
 
-# Auto-detect directory where THIS script lives
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-# Path to your summarize script
-SCRIPT="${SCRIPT_DIR}/summarize_paralogs.py"
-
-# Auto-detect the directory you need to bind (one level up)
-# This ensures Singularity sees everything in your repo
-BIND_DIR="/farmshare/user_data/cochiu9"
+# -------------------------------------------
+# Run summarize_paralogs.py for both genomes
+# -------------------------------------------
 
 # Path to Singularity container
-SIF="/farmshare/home/classes/bios/270/envs/bioinformatics_latest.sif"
+SIF=/farmshare/home/classes/bios/270/envs/bioinformatics_latest.sif
 
-echo "Using script: ${SCRIPT}"
-echo "Binding directory: ${BIND_DIR}"
+# Absolute path to project1 data
+DATA=/farmshare/home/classes/bios/270/data/project1
 
+# Absolute path to your repo (where the script is)
+REPO=/farmshare/user_data/cochiu9/repos/BIOS270-AU25/Writeups/writeup0
 
-### ---- FILE PATHS FOR INPUTS ---- ###
+# Path to Python script
+SCRIPT=$REPO/summarize_paralogs.py
 
-E_FAA="/farmshare/home/classes/bios/270/data/project1/ecoli_bakta_out/assembly.faa"
-E_CLUST="/farmshare/home/classes/bios/270/data/project1/ecoli_mmseqs_out/ecoli_prot90_cluster.tsv"
-
-K_FAA="/farmshare/home/classes/bios/270/data/project1/kpneumo_bakta_out/assembly.faa"
-K_CLUST="/farmshare/home/classes/bios/270/data/project1/kpneumo_mmseqs_out/kpneumo_prot90_cluster.tsv"
-
-### ---- OUTPUT FILES (written next to your script) ---- ###
-
-E_OUT_TSV="${SCRIPT_DIR}/ecoli_paralogs.tsv"
-E_OUT_PNG="${SCRIPT_DIR}/ecoli_top10_paralogs.png"
-
-K_OUT_TSV="${SCRIPT_DIR}/kpneumo_paralogs.tsv"
-K_OUT_PNG="${SCRIPT_DIR}/kpneumo_top10_paralogs.png"
-
-
+# Run for E. coli
 echo "Running E. coli..."
-singularity exec --bind ${BIND_DIR} ${SIF} \
-    python3 ${SCRIPT} \
-    --faa ${E_FAA} --clusters ${E_CLUST} \
-    --out_tsv ${E_OUT_TSV} --out_png ${E_OUT_PNG}
+singularity exec -B $DATA:$DATA -B $REPO:$REPO $SIF \
+    python3 $SCRIPT \
+    --faa $DATA/ecoli_bakta_out/assembly.faa \
+    --clusters $DATA/ecoli_mmseqs_out/ecoli_prot90_cluster.tsv \
+    --out_tsv $REPO/ecoli_paralogs.tsv \
+    --out_png $REPO/ecoli_top10_paralogs.png
 
+# Run for K. pneumoniae
 echo "Running K. pneumoniae..."
-singularity exec --bind ${BIND_DIR} ${SIF} \
-    python3 ${SCRIPT} \
-    --faa ${K_FAA} --clusters ${K_CLUST} \
-    --out_tsv ${K_OUT_TSV} --out_png ${K_OUT_PNG}
+singularity exec -B $DATA:$DATA -B $REPO:$REPO $SIF \
+    python3 $SCRIPT \
+    --faa $DATA/kleb_bakta_out/assembly.faa \
+    --clusters $DATA/kleb_mmseqs_out/kleb_prot90_cluster.tsv \
+    --out_tsv $REPO/kpneumo_paralogs.tsv \
+    --out_png $REPO/kpneumo_top10_paralogs.png
 
 echo "All done!"
