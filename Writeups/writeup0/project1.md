@@ -132,3 +132,13 @@ Example:
     /farmshare/home/classes/bios/270/data/project1/ecoli_flye_out
 
 ------------------------------------------------------------------------
+
+### E. coli paralogs
+
+- TSV summary: [ecoli_paralogs.tsv](./ecoli_paralogs.tsv)  
+- Top 10 paralogs plot: ![Top 10 E. coli paralogs](./ecoli_top10_paralogs.png)
+
+### K. pneumoniae paralogs
+
+- TSV summary: [kpneumo_paralogs.tsv](./kpneumo_paralogs.tsv)  
+- Top 10 paralogs plot: ![Top 10 K. pneumoniae paralogs](./kpneumo_top10_paralogs.png)
