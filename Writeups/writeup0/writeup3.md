@@ -136,3 +136,6 @@ Since it takes a few hours to create h5 file from `create_protein_h5.sh`, use da
 **Hints:**
 - You may import class and functions from `query_bacteria_db.py`.
 - Consider creating a **dictionary** mapping between protein IDs and their indices in h5 dataset to avoid repeated lookups using `list.index()`.
+
+create_bacteria_db.sh will create will create 3 tables.
+Try is to try writing into the database, but not to if the db is locked as another operations is writing into it. The except is if is currently being written in by another operation, to then to pause and then try again.
